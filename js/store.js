@@ -9,6 +9,7 @@ let allProducts = [
 
 const shopItemsContainer = document.querySelector(".shop-items");
 const basketProductsContainer = document.querySelector(".cart-items");
+const removeAllProductsBtn = document.querySelector("#remove-all-product");
 let userBasket = [];
 
 allProducts.forEach(function (product) {
@@ -108,3 +109,14 @@ function basketProductsGenerator(userBasketArray) {
     console.log(basketProductContainer);
   });
 }
+function removeProducFromtBasket(productId) {
+  userBasket = userBasket.filter(function (product) {
+    return product.id !== productId;
+  });
+  console.log(userBasket);
+  basketProductsGenerator(userBasket);
+}
+removeAllProductsBtn.addEventListener("click", function () {
+  userBasket = [];
+  basketProductsGenerator(userBasket);
+});
