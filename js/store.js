@@ -103,12 +103,15 @@ function basketProductsGenerator(userBasketArray) {
 
     let basketProductInput = document.createElement("input");
     basketProductInput.className = "cart-quantity-input";
-    basketProductInput.value = "1";
+    basketProductInput.value = product.count;
     basketProductInput.setAttribute("type", "number");
 
     let basketProductRemoveBtn = document.createElement("button");
     basketProductRemoveBtn.className = "btn btn-danger";
     basketProductRemoveBtn.innerHTML = "Remove";
+    basketProductRemoveBtn.addEventListener("click", function () {
+      removeProducFromtBasket(product.id);
+    });
 
     basketProductInputContainer.append(
       basketProductInput,
@@ -130,6 +133,7 @@ function removeProducFromtBasket(productId) {
   console.log(userBasket);
   basketProductsGenerator(userBasket);
 }
+
 removeAllProductsBtn.addEventListener("click", function () {
   userBasket = [];
   basketProductsGenerator(userBasket);
