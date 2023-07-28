@@ -129,6 +129,7 @@ function basketProductsGenerator(userBasketArray) {
     console.log(basketProductContainer);
   });
 }
+
 function removeProducFromtBasket(productId) {
   userBasket = userBasket.filter(function (product) {
     return product.id !== productId;
@@ -141,13 +142,17 @@ function removeProducFromtBasket(productId) {
 removeAllProductsBtn.addEventListener("click", function () {
   userBasket = [];
   basketProductsGenerator(userBasket);
+  calcTotalPrice(userBasket);
 });
+
 function calcTotalPrice(userBasketArray) {
   let totalPriceValue = 0;
+
   userBasketArray.forEach(function (product) {
     totalPriceValue += product.count * product.price;
-    cartTotalPriceElem.innerHTML = totalPriceValue;
   });
+
+  cartTotalPriceElem.innerHTML = totalPriceValue;
 }
 
 function updateProductCount(productId, newCount) {
