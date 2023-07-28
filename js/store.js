@@ -135,6 +135,7 @@ function removeProducFromtBasket(productId) {
   });
   console.log(userBasket);
   basketProductsGenerator(userBasket);
+  calcTotalPrice(userBasket);
 }
 
 removeAllProductsBtn.addEventListener("click", function () {
